@@ -1,0 +1,130 @@
+:root {
+  --blue: #4A7FD4;
+  --blue2: #3A8DFF;
+  --purple: #7B5EA7;
+  --orange: #E8921A;
+  --dark: #07090F;
+  --dark2: #0C0E18;
+  --dark3: #111422;
+  --text: #ECEEF5;
+  --muted: #7A82A0;
+  --soft: #B0B8D0;
+  --grad: linear-gradient(135deg, #4A7FD4, #7B5EA7, #E8921A);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--dark);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, .font-serif {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.text-gradient {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-gradient-brand {
+  background: var(--grad);
+}
+
+.glass-nav {
+  background-color: rgba(7, 9, 15, 0.82);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Custom radial glows */
+.glow-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  opacity: 0.15;
+}
+.glow-purple {
+  top: -10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: var(--purple);
+}
+.glow-blue {
+  bottom: -20%;
+  left: -10%;
+  width: 500px;
+  height: 500px;
+  background: var(--blue);
+}
+.glow-orange {
+  bottom: -10%;
+  right: -10%;
+  width: 450px;
+  height: 450px;
+  background: var(--orange);
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--blue2);
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(74, 127, 212, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(74, 127, 212, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(74, 127, 212, 0);
+  }
+}
+
+.trust-brands-sidebar {
+  overflow-x: hidden;
+  white-space: nowrap;
+}
+
+/* Modal overlays */
+.modal-overlay {
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(8px);
+}
+
+.accordion-arrow {
+  transition: transform 0.3s ease;
+}
+.accordion-open .accordion-arrow {
+  transform: rotate(180deg);
+}
+.accordion-content {
+  transition: max-height 0.3s ease, opacity 0.3s ease, padding 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+.accordion-open .accordion-content {
+  max-height: 500px;
+  opacity: 1;
+}
