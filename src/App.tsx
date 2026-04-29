@@ -9,12 +9,12 @@ import { initializeApp, getApps } from 'firebase/app';
 import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut, User } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "REPLACE",
-  authDomain: "REPLACE",
-  projectId: "REPLACE",
-  storageBucket: "REPLACE",
-  messagingSenderId: "REPLACE",
-  appId: "REPLACE"
+  apiKey: "AIzaSyCmFaSucPvyFIXt_mxfc8X-U6rDcrYJ1T8",
+  authDomain: "bringit-25.firebaseapp.com",
+  projectId: "bringit-25",
+  storageBucket: "bringit-25.firebasestorage.app",
+  messagingSenderId: "812546413996",
+  appId: "1:812546413996:web:26f3777ad763bfd76d9609"
 };
 const fbApp = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
 const auth = getAuth(fbApp);
@@ -627,7 +627,7 @@ export default function App() {
                    setStatus('submitting');
                    const formData = new FormData(e.currentTarget);
                    try {
-                     const response = await fetch("https://formspree.io/f/REPLACE_WITH_YOUR_ID", {
+                     const response = await fetch("https://formspree.io/f/mgorgakb", {
                        method: 'POST',
                        body: formData,
                        headers: { 'Accept': 'application/json' }
