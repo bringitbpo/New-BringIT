@@ -68,11 +68,9 @@ useEffect(() => {
     if (selectedPackage) {
       setIsContactModalOpen(true);
     }
-  } catch (error: any) {
-    if (error.code === 'auth/popup-blocked') {
-      alert('Please allow popups for this site to use Google login.');
-    }
-  }
+ } catch (error: any) {
+  console.log(error);
+}
 };
 
   const handlePackageClick = (pkgName: string) => {
