@@ -1,4 +1,3 @@
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, CheckCircle2, Smartphone, Clock, Zap, Users, MessageCircle, Mail } from 'lucide-react';
@@ -20,10 +19,7 @@ const firebaseConfig = {
 const fbApp = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
 const auth = getAuth(fbApp);
 const googleProvider = new GoogleAuthProvider();
-initializeAppCheck(fbApp, {
-  provider: new ReCaptchaV3Provider('6LdeetQsAAAAAPMaCPmXEC4qtXBcCgPOxcA3D9A9'),
-  isTokenAutoRefreshEnabled: true
-});
+
 const Logo = () => {
   const [error, setError] = useState(false);
   if (error) {
