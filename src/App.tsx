@@ -19,8 +19,6 @@ const firebaseConfig = {
 const fbApp = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
 const auth = getAuth(fbApp);
 const googleProvider = new GoogleAuthProvider();
-googleProvider.addScope('email');
-googleProvider.addScope('profile');
 
 const Logo = () => {
   const [error, setError] = useState(false);
@@ -69,8 +67,10 @@ useEffect(() => {
       setIsContactModalOpen(true);
     }
  } catch (error: any) {
-  console.log(error);
-}
+    if (error.code === 'auth/popup-blocked') {
+      alert('Please allow popups for this site to use Google login.');
+    }
+  }
 };
 
   const handlePackageClick = (pkgName: string) => {
