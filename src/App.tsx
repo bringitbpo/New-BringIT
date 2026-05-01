@@ -10,7 +10,7 @@ import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onA
 
 const firebaseConfig = {
   apiKey: "AIzaSyCmFaSucPvyFIXt_mxfc8X-U6rDcrYJ1T8",
-  authDomain: "bringit-25.firebaseapp.com",
+  authDomain: "bringitbpo.com",
   projectId: "bringit-25",
   storageBucket: "bringit-25.firebasestorage.app",
   messagingSenderId: "812546413996",
