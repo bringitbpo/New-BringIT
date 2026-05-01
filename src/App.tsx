@@ -6,7 +6,7 @@ import { SquishyPricing } from './components/ui/squishy-pricing';
 import './App.css';
 
 import { initializeApp, getApps } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut, User } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged, signOut, User } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCmFaSucPvyFIXt_mxfc8X-U6rDcrYJ1T8",
@@ -40,12 +40,22 @@ export default function App() {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
 
-  useEffect(() => {
-    // Inject Fonts
+  
+useEffect(() => {
     const link = document.createElement('link');
     link.href = 'https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Outfit:wght@300;400;500;600;700&display=swap';
     link.rel = 'stylesheet';
     document.head.appendChild(link);
+
+    getRedirectResult(auth).then((result) => {
+      if (result?.user) {
+        setUser(result.user);
+        setIsAuthModalOpen(false);
+        if (selectedPackage) {
+          setIsContactModalOpen(true);
+        }
+      }
+    });
 
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
@@ -58,7 +68,7 @@ export default function App() {
 
   const handleLogin = async () => {
     try {
-      await signInWithPopup(auth, googleProvider);
+      await signInWithRedirect(auth, googleProvider);
       setIsAuthModalOpen(false);
       if (selectedPackage) {
         setIsContactModalOpen(true);
