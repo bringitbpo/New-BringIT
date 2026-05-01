@@ -47,15 +47,15 @@ useEffect(() => {
     link.rel = 'stylesheet';
     document.head.appendChild(link);
 
-    getRedirectResult(auth).then((result) => {
-      if (result?.user) {
-        setUser(result.user);
-        setIsAuthModalOpen(false);
-        if (selectedPackage) {
-          setIsContactModalOpen(true);
-        }
-      }
-    });
+   getRedirectResult(auth).then((result) => {
+  console.log('Redirect result:', result);
+  if (result?.user) {
+    setUser(result.user);
+    setIsAuthModalOpen(false);
+  }
+}).catch((error) => {
+  console.log('Redirect error:', error);
+});
 
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
