@@ -6,7 +6,7 @@ import { SquishyPricing } from './components/ui/squishy-pricing';
 import './App.css';
 
 import { initializeApp, getApps } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithPopup, getRedirectResult, onAuthStateChanged, signOut, User } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut, User } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCmFaSucPvyFIXt_mxfc8X-U6rDcrYJ1T8",
@@ -19,6 +19,8 @@ const firebaseConfig = {
 const fbApp = getApps().length > 0 ? getApps()[0] : initializeApp(firebaseConfig);
 const auth = getAuth(fbApp);
 const googleProvider = new GoogleAuthProvider();
+googleProvider.addScope('email');
+googleProvider.addScope('profile');
 
 const Logo = () => {
   const [error, setError] = useState(false);
@@ -47,15 +49,7 @@ useEffect(() => {
     link.rel = 'stylesheet';
     document.head.appendChild(link);
 
-   getRedirectResult(auth).then((result) => {
-  console.log('Redirect result:', result);
-  if (result?.user) {
-    setUser(result.user);
-    setIsAuthModalOpen(false);
-  }
-}).catch((error) => {
-  console.log('Redirect error:', error);
-});
+   
 
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
