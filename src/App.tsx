@@ -6,11 +6,11 @@ import { SquishyPricing } from './components/ui/squishy-pricing';
 import './App.css';
 
 import { initializeApp, getApps } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged, signOut, User } from 'firebase/auth';
+import { getAuth, GoogleAuthProvider, signInWithPopup, getRedirectResult, onAuthStateChanged, signOut, User } from 'firebase/auth';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCmFaSucPvyFIXt_mxfc8X-U6rDcrYJ1T8",
-  authDomain: "bringitbpo.com",
+  authDomain: "bringit-25.firebaseapp.com",
   projectId: "bringit-25",
   storageBucket: "bringit-25.firebasestorage.app",
   messagingSenderId: "812546413996",
@@ -67,17 +67,19 @@ useEffect(() => {
   }, []);
 
   const handleLogin = async () => {
-    try {
-      await signInWithRedirect(auth, googleProvider);
-      setIsAuthModalOpen(false);
-      if (selectedPackage) {
-        setIsContactModalOpen(true);
-      }
-    } catch (error) {
-      console.error(error);
-      alert('Login failed. Please allow popups or try again.');
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    setUser(result.user);
+    setIsAuthModalOpen(false);
+    if (selectedPackage) {
+      setIsContactModalOpen(true);
     }
-  };
+  } catch (error: any) {
+    if (error.code === 'auth/popup-blocked') {
+      alert('Please allow popups for this site to use Google login.');
+    }
+  }
+};
 
   const handlePackageClick = (pkgName: string) => {
     setSelectedPackage(pkgName);
