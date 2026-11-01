@@ -86,7 +86,7 @@ export const SquishyPricing = ({
               { text: 'Expansion support' },
               { text: 'Dedicated account manager' }
             ]}
-            cta="Enquire Premium"
+            cta="Inquire About Premium"
             onClick={() => onPackageClick('Premium')}
             background="bg-[#111422] border-[rgba(255,255,255,0.07)]"
             accentColor="#E8921A"

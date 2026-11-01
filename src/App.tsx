@@ -268,6 +268,10 @@ useEffect(() => {
           <span>BASKIN ROBBINS</span>
           <div className="w-[1px] h-3 bg-white/10 hidden lg:block"></div>
           <span>CHARLEYS CHEESESTEAKS</span>
+          <div className="w-[1px] h-3 bg-white/10 hidden md:block"></div>
+          <span>DOMINO'S</span>
+          <div className="w-[1px] h-3 bg-white/10 hidden md:block"></div>
+          <span>PAPA JOHN'S</span>
         </div>
       </section>
       
@@ -436,7 +440,7 @@ useEffect(() => {
                      {i.p}
                   </div>
                   <p className="text-[13.5px] text-[#7A82A0] leading-[1.75] mb-6 flex-1 mt-2">{i.d}</p>
-                  <a href={`mailto:bringit.bpo@gmail.com?subject=Add-On Enquiry — ${i.t}`} className="mt-auto text-[12px] font-bold uppercase tracking-[0.1em] text-[#4A7FD4] hover:text-[#3A8DFF] transition-colors">ENQUIRE NOW →</a>
+                  <a href={`mailto:bringit.bpo@gmail.com?subject=Add-On Inquiry — ${i.t}`} className="mt-auto text-[12px] font-bold uppercase tracking-[0.1em] text-[#4A7FD4] hover:text-[#3A8DFF] transition-colors">INQUIRE NOW →</a>
                 </motion.div>
               );
             })}
@@ -537,7 +541,7 @@ useEffect(() => {
 
                <div className="mt-8 bg-[#0C0E18] border border-[rgba(255,255,255,0.07)] border-l-[3px] border-l-[#4A7FD4] rounded-[12px] p-[1.5rem_2rem]">
                  <div className="text-[13px] text-[#7A82A0] italic mb-2">Operation Experience with:</div>
-                 <div className="font-bold text-[#ECEEF5] text-[1rem]">Cold Stone • Dunkin' • Baskin Robbins • Charleys</div>
+                 <div className="font-bold text-[#ECEEF5] text-[1rem]">Cold Stone • Dunkin' • Baskin Robbins • Charleys • Domino's • Papa John's</div>
                </div>
             </motion.div>
          </div>
@@ -623,7 +627,7 @@ useEffect(() => {
       <footer className="bg-[#07090F] border-t border-white/5 py-12 px-6 md:px-12 relative overflow-hidden">
          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
             <Logo />
-            <div className="text-[12px] text-[var(--muted)]">© 2025 BringIT. Remote Operations & Revenue Control for Restaurants. All rights reserved.</div>
+            <div className="text-[12px] text-[var(--muted)]">© {new Date().getFullYear()} BringIT. Remote Operations & Revenue Control for Restaurants. All rights reserved.</div>
             <div className="flex gap-6 text-[12px] font-medium uppercase tracking-wider text-[var(--soft)]">
                <a href="#" className="hover:text-white">Home</a>
                <a href="#services" className="hover:text-white">Services</a>
