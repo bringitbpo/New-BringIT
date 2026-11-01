@@ -59,8 +59,8 @@ export const SquishyPricing = () => {
             ]}
             cta="Get Growth Pricing"
             href={whatsappLink("Hi! I'm interested in the Growth package. Can you share pricing?")}
-            background="bg-[#0C0E18] border-[#7B5EA7]/40 shadow-[0_0_30px_rgba(123,94,167,0.15)]"
-            accentColor="#7B5EA7"
+            background="bg-[#0C0E18] border-[#E8921A]/40 shadow-[0_0_30px_rgba(232,146,26,0.15)]"
+            accentColor="#E8921A"
             isPopular={true}
             BGComponent={BGComponent2}
           />
@@ -83,7 +83,7 @@ export const SquishyPricing = () => {
             cta="Get Premium Pricing"
             href={whatsappLink("Hi! I'm interested in the Premium package. Can you share pricing?")}
             background="bg-[#111422] border-[rgba(255,255,255,0.07)]"
-            accentColor="#E8921A"
+            accentColor="#7B5EA7"
             BGComponent={BGComponent3}
           />
         </div>
@@ -124,7 +124,7 @@ const PricingCard = ({ label, description, audience, features, cta, background, 
       className={`relative min-h-[600px] w-full max-w-[360px] shrink-0 overflow-hidden rounded-[24px] p-8 lg:p-10 border ${background} shadow-2xl transition-shadow group flex flex-col`}
     >
       {isPopular && (
-        <div className="absolute top-4 right-4 bg-gradient-to-r from-[#4A7FD4] to-[#7B5EA7] text-white text-[9px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full z-20 shadow-lg shadow-purple-500/20">
+        <div className="absolute top-4 right-4 btn-orange text-[9px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full z-20 shadow-lg shadow-orange-500/20">
           MOST POPULAR
         </div>
       )}
@@ -150,8 +150,9 @@ const PricingCard = ({ label, description, audience, features, cta, background, 
           rel="noopener noreferrer"
           className="mt-auto flex items-center justify-center gap-2 relative z-20 w-full rounded-xl border border-white/10 bg-white/5 py-3.5 text-center font-bold text-[13px] uppercase tracking-wide text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/15 hover:border-white/30"
           style={isPopular ? {
-            background: 'linear-gradient(135deg, rgba(74,127,212,0.9), rgba(123,94,167,0.9))',
-            borderColor: 'rgba(255,255,255,0.2)'
+            background: 'linear-gradient(135deg, #F5A83E, #E8921A)',
+            borderColor: 'rgba(255,255,255,0.2)',
+            color: '#0B0D14'
           } : {}}
         >
           <MessageCircle size={16} />

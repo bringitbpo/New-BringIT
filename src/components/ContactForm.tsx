@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle2, X } from 'lucide-react';
 
-const inputClass = 'w-full bg-[#111422] border border-white/5 rounded-[12px] px-4 py-3.5 focus:border-[#4A7FD4]/50 hover:border-white/10 outline-none text-[14px] transition-colors';
+const inputClass = 'w-full bg-[#111422] border border-white/5 rounded-[12px] px-4 py-3.5 focus:border-[#E8921A]/60 hover:border-white/10 outline-none text-[14px] transition-colors';
 
 export function ContactForm() {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -38,7 +38,7 @@ export function ContactForm() {
         <div className="w-16 h-16 bg-red-500/20 text-red-500 rounded-full flex items-center justify-center mx-auto mb-6"><X size={32} /></div>
         <h3 className="text-2xl font-bold mb-3">Something went wrong</h3>
         <p className="text-[#7A82A0] mb-6">We couldn't send your message. Please reach out directly.</p>
-        <a href="mailto:bringit.bpo@gmail.com" className="px-6 py-3 rounded-full bg-[#4A7FD4] text-white font-bold">Email Us Directly</a>
+        <a href="mailto:bringit.bpo@gmail.com" className="px-6 py-3 rounded-full btn-orange font-bold">Email Us Directly</a>
       </div>
     );
   }
@@ -61,7 +61,7 @@ export function ContactForm() {
         <option value="7+">7+</option>
       </select>
       <textarea required name="message" placeholder="How can we help?" aria-label="How can we help?" rows={5} className={`${inputClass} resize-none`}></textarea>
-      <button type="submit" disabled={status === 'submitting'} className="w-full py-4 rounded-[12px] bg-gradient-to-r from-[#4A7FD4] to-[#7B5EA7] text-white font-bold text-[15px] tracking-wide hover:opacity-90 disabled:opacity-50 transition-opacity mt-2 shadow-lg shadow-[#4A7FD4]/20 border border-white/10">
+      <button type="submit" disabled={status === 'submitting'} className="w-full py-4 rounded-[12px] btn-orange font-bold text-[15px] tracking-wide disabled:opacity-50 transition-opacity mt-2 shadow-lg shadow-orange-500/20 border border-white/10">
         {status === 'submitting' ? 'Sending...' : 'Send Message →'}
       </button>
     </form>

@@ -90,7 +90,7 @@ useEffect(() => {
             {!user ? (
               <>
                 <button onClick={() => setIsAuthModalOpen(true)} className="px-6 py-2 rounded-full border border-white/15 text-sm font-semibold hover:bg-white/5 transition-colors text-white">Login</button>
-                <a href="#contact" className="px-6 py-2 rounded-full bg-gradient-to-r from-[#4A7FD4] to-[#7B5EA7] text-white text-sm font-bold shadow-lg shadow-blue-500/10">
+                <a href="#contact" className="px-6 py-2 rounded-full btn-orange text-sm font-bold shadow-lg shadow-orange-500/20">
                   Book Strategy Call
                 </a>
               </>
@@ -127,7 +127,7 @@ useEffect(() => {
               {!user ? (
                 <div className="flex flex-col gap-3">
                   <button onClick={() => { setIsAuthModalOpen(true); setIsMobileMenuOpen(false); }} className="w-full px-5 py-3 rounded-full border border-white/15 text-white text-sm font-semibold">Login</button>
-                  <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="w-full px-5 py-3 rounded-full bg-gradient-brand text-white text-sm font-semibold text-center pointer-events-auto">
+                  <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="w-full px-5 py-3 rounded-full btn-orange text-sm font-bold text-center pointer-events-auto">
                     Book Free Consultation
                   </a>
                 </div>
@@ -175,7 +175,7 @@ useEffect(() => {
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }} className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full mb-8">
-            <a href="#contact" className="px-10 py-4 bg-gradient-to-r from-[#4A7FD4] to-[#7B5EA7] text-white rounded-full font-bold text-lg hover:opacity-90 transition-all text-center pointer-events-auto">
+            <a href="#contact" className="px-10 py-4 btn-orange rounded-full font-bold text-lg shadow-lg shadow-orange-500/20 transition-all text-center pointer-events-auto">
               Book Free Strategy Call
             </a>
             <a href="#pricing" className="px-10 py-4 border border-white/15 bg-white/5 text-[var(--soft)] rounded-full font-bold text-lg text-center hover:bg-white/10 transition-colors pointer-events-auto">
@@ -450,7 +450,7 @@ useEffect(() => {
              ].map((stat, idx) => (
                <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="flex flex-col items-center text-center">
                   <div className="text-3xl mb-4 opacity-80">{stat.i}</div>
-                  <div className="font-serif text-[2.8rem] font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#4A7FD4] to-[#7B5EA7] mb-2 leading-none" style={{ fontFamily: 'Georgia, serif' }}>{stat.v}</div>
+                  <div className="font-serif text-[2.8rem] font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#F5A83E] to-[#E8921A] mb-2 leading-none" style={{ fontFamily: 'Georgia, serif' }}>{stat.v}</div>
                   <div className="text-sm text-[#7A82A0] font-medium">{stat.d}</div>
                </motion.div>
              ))}
@@ -559,7 +559,7 @@ useEffect(() => {
          <div className="relative z-10 max-w-3xl mx-auto flex flex-col items-center">
             <h2 className="font-serif text-[clamp(2.5rem,4vw,4rem)] font-bold mb-6" style={{ fontFamily: 'Georgia, serif' }}>Your Store Runs Better With <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#4A7FD4] to-[#7B5EA7]">BringIT</span></h2>
             <p className="text-lg text-[#7A82A0] font-light mb-12 max-w-xl mx-auto leading-relaxed">Let us handle the back office while you focus on growth. No long contracts, no complicated setup.</p>
-            <a href="#contact" className="inline-block px-10 py-4 rounded-full bg-gradient-to-r from-[#4A7FD4] to-[#7B5EA7] text-white font-bold tracking-wide shadow-xl shadow-blue-500/20 hover:opacity-90 transition-all text-lg border border-white/10 pointer-events-auto">
+            <a href="#contact" className="inline-block px-10 py-4 rounded-full btn-orange font-bold tracking-wide shadow-xl shadow-orange-500/20 transition-all text-lg border border-white/10 pointer-events-auto">
               Book Free Strategy Call →
             </a>
          </div>

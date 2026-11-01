@@ -128,3 +128,12 @@ h1, h2, h3, h4, h5, h6, .font-serif {
   max-height: 500px;
   opacity: 1;
 }
+
+/* Primary call-to-action buttons: brand orange */
+.btn-orange {
+  background: linear-gradient(135deg, #F5A83E 0%, #E8921A 100%);
+  color: #0B0D14;
+}
+.btn-orange:hover {
+  filter: brightness(1.06);
+}
