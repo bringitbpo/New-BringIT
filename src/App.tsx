@@ -193,8 +193,8 @@ useEffect(() => {
               <span className="text-[10px] font-bold tracking-widest text-[#7A82A0] uppercase">Revenue Leakage Prevented</span>
             </div>
             <div className="py-8 px-6 border-b md:border-b-0 md:border-r border-white/10 flex flex-col gap-2">
-              <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#7B5EA7] to-[#E8921A]" style={{ fontFamily: 'Georgia, serif' }}>$150K+</span>
-              <span className="text-[10px] font-bold tracking-widest text-[#7A82A0] uppercase">Hidden Annual Loss Per Store</span>
+              <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#7B5EA7] to-[#E8921A]" style={{ fontFamily: 'Georgia, serif' }}>Up to $150K</span>
+              <span className="text-[10px] font-bold tracking-widest text-[#7A82A0] uppercase">Potential Yearly Loss for a $1M Store</span>
             </div>
             <div className="py-8 px-6 flex flex-col gap-2">
               <span className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#E8921A] to-[#4A7FD4]" style={{ fontFamily: 'Georgia, serif' }}>6</span>
@@ -269,7 +269,7 @@ useEffect(() => {
             <span className="text-[10px] font-bold tracking-widest text-[#4A7FD4] uppercase mb-4">THE HIDDEN PROBLEM</span>
             <h2 className="text-4xl md:text-5xl font-bold mb-8 text-center" style={{ fontFamily: 'Georgia, serif' }}>The Hidden Leaks Costing Restaurants Thousands</h2>
             <div className="mx-auto max-w-3xl border border-[rgba(232,146,26,0.15)] bg-[rgba(232,146,26,0.06)] rounded-2xl p-6 md:p-8 text-[var(--text)] leading-relaxed shadow-lg shadow-[#E8921A]/5">
-              Restaurants lose 6–15%+ of annual revenue through preventable operational leakage. A $1M store can silently lose <strong className="text-[#E8921A]">$150,000 every year.</strong>
+              Restaurants lose 6–15%+ of annual revenue through preventable operational leakage. At that rate, a $1M store could be losing <strong className="text-[#E8921A]">up to $150,000 a year.</strong>
             </div>
           </div>
           
@@ -446,7 +446,7 @@ useEffect(() => {
                { i: '⏱️', v: '2–8%', d: 'of payroll wasted on labor inefficiency' },
                { i: '💳', v: '1–5%', d: 'leaked through unmonitored POS discrepancies' },
                { i: '💸', v: '0.5–3%', d: 'lost to fraudulent refund abuse' },
-               { i: '⭐', v: '30', d: 'customers lost per unanswered negative review' }
+               { i: '🏆', v: '5+', d: 'years managing U.S. franchise operations remotely' }
              ].map((stat, idx) => (
                <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="flex flex-col items-center text-center">
                   <div className="text-3xl mb-4 opacity-80">{stat.i}</div>
