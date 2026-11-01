@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Menu, X, CheckCircle2, Smartphone, Clock, Zap, Users, MessageCircle, Mail } from 'lucide-react';
 import { ContainerScroll } from './components/ui/container-scroll-animation';
 import { SquishyPricing } from './components/ui/squishy-pricing';
+import { FaqItem } from './components/FaqItem';
+import { ContactForm } from './components/ContactForm';
 import './App.css';
 
 import { initializeApp, getApps } from 'firebase/app';
@@ -558,20 +560,7 @@ useEffect(() => {
               { q: 'Do you handle delivery app disputes?', a: 'Yes. We dispute false refund claims on UberEats, DoorDash, and Grubhub up to platform limits, track recovery weekly, and report exactly what was saved.' },
               { q: 'Is this only for large restaurants?', a: 'Not at all. Our Starter at $149/month is for single-store owners. The problems we solve affect every size of operation.' },
               { q: 'Who has access to my store systems?', a: 'Access is handled personally by Fahad Siddique, the BringIT founder. Sensitive credentials are never shared without your explicit approval.' },
-            ].map((faq, i) => {
-              const [isOpen, setIsOpen] = useState(false);
-              return (
-                <div key={i} className={`bg-[#0C0E18] border border-white/5 rounded-2xl overflow-hidden transition-all duration-300 hover:border-white/10 ${isOpen ? 'accordion-open border-white/10 shadow-lg shadow-black/30' : ''}`}>
-                  <button onClick={() => setIsOpen(!isOpen)} className="w-full text-left p-6 flex justify-between items-center gap-4">
-                    <span className="font-semibold text-[16px] text-white">{faq.q}</span>
-                    <X className={`w-5 h-5 text-[#B0B8D0] shrink-0 accordion-arrow transition-transform duration-300 ${isOpen ? '' : 'rotate-45'}`} />
-                  </button>
-                  <div className={`accordion-content px-6 bg-white/[0.02] text-[15px] text-[#7A82A0] leading-relaxed transition-all duration-300 ${isOpen ? 'pb-6' : ''}`}>
-                    {faq.a}
-                  </div>
-                </div>
-              )
-            })}
+            ].map((faq, i) => <FaqItem key={i} q={faq.q} a={faq.a} />)}
           </div>
         </div>
       </section>
@@ -623,71 +612,7 @@ useEffect(() => {
                <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-[#4A7FD4]/10 blur-[80px] pointer-events-none rounded-full"></div>
                <div className="absolute bottom-0 left-0 w-[200px] h-[200px] bg-[#7B5EA7]/10 blur-[80px] pointer-events-none rounded-full"></div>
                <div className="relative z-10">
-               {(() => {
-                 const [status, setStatus] = useState<'idle'|'submitting'|'success'|'error'>('idle');
-                 
-                 const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-                   e.preventDefault();
-                   setStatus('submitting');
-                   const formData = new FormData(e.currentTarget);
-                   try {
-                     const response = await fetch("https://formspree.io/f/mgorgakb", {
-                       method: 'POST',
-                       body: formData,
-                       headers: { 'Accept': 'application/json' }
-                     });
-                     if (response.ok) setStatus('success');
-                     else setStatus('error');
-                   } catch (err) {
-                     setStatus('error');
-                   }
-                 };
-
-                 if (status === 'success') {
-                   return (
-                     <div className="text-center py-10">
-                       <div className="w-16 h-16 bg-[#5DD98A]/20 text-[#5DD98A] rounded-full flex items-center justify-center mx-auto mb-6"><CheckCircle2 size={32} /></div>
-                       <h3 className="text-2xl font-bold mb-3">Message Sent!</h3>
-                       <p className="text-[#7A82A0]">We will get back to you within 24 hours.</p>
-                     </div>
-                   );
-                 }
-
-                 if (status === 'error') {
-                   return (
-                     <div className="text-center py-10">
-                       <div className="w-16 h-16 bg-red-500/20 text-red-500 rounded-full flex items-center justify-center mx-auto mb-6"><X size={32} /></div>
-                       <h3 className="text-2xl font-bold mb-3">Something went wrong</h3>
-                       <p className="text-[#7A82A0] mb-6">We couldn't send your message. Please reach out directly.</p>
-                       <a href="mailto:bringit.bpo@gmail.com" className="px-6 py-3 rounded-full bg-[#4A7FD4] text-white font-bold">Email Us Directly</a>
-                     </div>
-                   );
-                 }
-
-                 return (
-                   <form onSubmit={handleSubmit} className="space-y-5 flex flex-col">
-                     <div className="flex flex-col md:flex-row gap-5">
-                       <div className="flex-1"><input required name="name" type="text" placeholder="Your Name" className="w-full bg-[#111422] border border-white/5 rounded-[12px] px-4 py-3.5 focus:border-[#4A7FD4]/50 hover:border-white/10 outline-none text-[14px] transition-colors" /></div>
-                       <div className="flex-1"><input required name="business" type="text" placeholder="Business Name" className="w-full bg-[#111422] border border-white/5 rounded-[12px] px-4 py-3.5 focus:border-[#4A7FD4]/50 hover:border-white/10 outline-none text-[14px] transition-colors" /></div>
-                     </div>
-                     <div className="flex flex-col md:flex-row gap-5">
-                       <div className="flex-1"><input required name="email" type="email" placeholder="Email Address" className="w-full bg-[#111422] border border-white/5 rounded-[12px] px-4 py-3.5 focus:border-[#4A7FD4]/50 hover:border-white/10 outline-none text-[14px] transition-colors" /></div>
-                       <div className="flex-1"><input name="whatsapp" type="tel" placeholder="WhatsApp (Optional)" className="w-full bg-[#111422] border border-white/5 rounded-[12px] px-4 py-3.5 focus:border-[#4A7FD4]/50 hover:border-white/10 outline-none text-[14px] transition-colors" /></div>
-                     </div>
-                     <select name="locations" className="w-full bg-[#111422] border border-white/5 rounded-[12px] px-4 py-3.5 focus:border-[#4A7FD4]/50 hover:border-white/10 outline-none text-[14px] text-[#7A82A0] transition-colors appearance-none" defaultValue="">
-                        <option value="" disabled>Number of Locations</option>
-                        <option value="1">1</option>
-                        <option value="2-3">2–3</option>
-                        <option value="4-6">4–6</option>
-                        <option value="7+">7+</option>
-                     </select>
-                     <textarea required name="message" placeholder="How can we help?" rows={5} className="w-full bg-[#111422] border border-white/5 rounded-[12px] px-4 py-3.5 focus:border-[#4A7FD4]/50 hover:border-white/10 outline-none text-[14px] transition-colors resize-none"></textarea>
-                     <button type="submit" disabled={status === 'submitting'} className="w-full py-4 rounded-[12px] bg-gradient-to-r from-[#4A7FD4] to-[#7B5EA7] text-white font-bold text-[15px] tracking-wide hover:opacity-90 disabled:opacity-50 transition-opacity mt-2 shadow-lg shadow-[#4A7FD4]/20 border border-white/10">
-                       {status === 'submitting' ? 'Sending...' : 'Send Message →'}
-                     </button>
-                   </form>
-                 );
-               })()}
+               <ContactForm />
                </div>
              </div>
           </div>
