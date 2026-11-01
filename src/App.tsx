@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, CheckCircle2, Smartphone, Clock, Zap, Users, MessageCircle, Mail } from 'lucide-react';
+import { Menu, X, Smartphone, Clock, Zap, Users, MessageCircle, Mail, Phone } from 'lucide-react';
+import { whatsappLink, WHATSAPP_DISPLAY, US_PHONE_TEL, US_PHONE_DISPLAY } from './lib/contact';
 import { ContainerScroll } from './components/ui/container-scroll-animation';
 import { SquishyPricing } from './components/ui/squishy-pricing';
 import { FaqItem } from './components/FaqItem';
@@ -39,8 +40,6 @@ export default function App() {
   const [user, setUser] = useState<User | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
-  const [selectedPackage, setSelectedPackage] = useState<string | null>(null);
 
   
 useEffect(() => {
@@ -65,24 +64,12 @@ useEffect(() => {
     const result = await signInWithPopup(auth, googleProvider);
     setUser(result.user);
     setIsAuthModalOpen(false);
-    if (selectedPackage) {
-      setIsContactModalOpen(true);
-    }
  } catch (error: any) {
     if (error.code === 'auth/popup-blocked') {
       alert('Please allow popups for this site to use Google login.');
     }
   }
 };
-
-  const handlePackageClick = (pkgName: string) => {
-    setSelectedPackage(pkgName);
-    if (user) {
-      setIsContactModalOpen(true);
-    } else {
-      setIsAuthModalOpen(true);
-    }
-  };
 
   return (
     <div className="relative min-h-screen overflow-x-clip bg-[var(--dark)] text-[var(--text)] selection:bg-[var(--purple)] selection:text-white">
@@ -94,7 +81,7 @@ useEffect(() => {
           <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-[var(--soft)]">
             <a href="#" className="text-white">Home</a>
             <a href="#services" className="hover:text-white transition-colors">Services</a>
-            <a href="#pricing" className="hover:text-white transition-colors">Pricing</a>
+            <a href="#pricing" className="hover:text-white transition-colors">Packages</a>
             <a href="#about" className="hover:text-white transition-colors">About</a>
             <a href="#contact" className="hover:text-white transition-colors">Contact</a>
           </div>
@@ -102,7 +89,7 @@ useEffect(() => {
           <div className="hidden md:flex flex-row items-center space-x-4">
             {!user ? (
               <>
-                <button onClick={() => { setSelectedPackage(null); setIsAuthModalOpen(true); }} className="px-6 py-2 rounded-full border border-white/15 text-sm font-semibold hover:bg-white/5 transition-colors text-white">Login</button>
+                <button onClick={() => setIsAuthModalOpen(true)} className="px-6 py-2 rounded-full border border-white/15 text-sm font-semibold hover:bg-white/5 transition-colors text-white">Login</button>
                 <a href="#contact" className="px-6 py-2 rounded-full bg-gradient-to-r from-[#4A7FD4] to-[#7B5EA7] text-white text-sm font-bold shadow-lg shadow-blue-500/10">
                   Book Strategy Call
                 </a>
@@ -133,7 +120,7 @@ useEffect(() => {
             >
               <a href="#" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium">Home</a>
               <a href="#services" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium">Services</a>
-              <a href="#pricing" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium">Pricing</a>
+              <a href="#pricing" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium">Packages</a>
               <a href="#about" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium">About</a>
               <a href="#contact" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium">Contact</a>
               <hr className="border-white/10 my-2" />
@@ -192,7 +179,7 @@ useEffect(() => {
               Book Free Strategy Call
             </a>
             <a href="#pricing" className="px-10 py-4 border border-white/15 bg-white/5 text-[var(--soft)] rounded-full font-bold text-lg text-center hover:bg-white/10 transition-colors pointer-events-auto">
-              See Pricing
+              See Packages
             </a>
           </motion.div>
 
@@ -411,7 +398,7 @@ useEffect(() => {
         </div>
       </section>
 
-      <SquishyPricing onPackageClick={handlePackageClick} />
+      <SquishyPricing />
 
       {/* Section 7 — Flexible Add-Ons */}
       <section className="bg-[#07090F] py-[80px] px-[6%]">
@@ -421,26 +408,23 @@ useEffect(() => {
               Flexible <span className="italic" style={{ fontFamily: 'Cormorant Garamond, Georgia, serif', backgroundImage: 'linear-gradient(135deg, #4A7FD4, #7B5EA7, #E8921A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', color: 'transparent' }}>Add-Ons</span>
             </h2>
             <p className="text-[#7A82A0] font-light max-w-[600px] leading-relaxed">
-               Customize your support without unnecessary pressure — only pay for what your operation truly needs.
+               Customize your support without unnecessary pressure. Only pay for what your operation truly needs. Message us on WhatsApp for add-on pricing.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: Smartphone, color: '#4A7FD4', bg: 'rgba(74,127,212,0.12)', t: 'Extra Social Media Content', p: '$100–$200/MONTH', d: 'Additional branded content creation, posting, and engagement support for stronger local visibility.' },
-              { icon: Clock, color: '#7B5EA7', bg: 'rgba(123,94,167,0.12)', t: '24/7 Coverage', p: 'STARTING AT $150+/MONTH', d: 'Extended operational monitoring for urgent issues, late-night problems, and continuous oversight.' },
-              { icon: Zap, color: '#E8921A', bg: 'rgba(232,146,26,0.12)', t: 'Priority Escalation Support', p: '$100/MONTH', d: 'Faster issue escalation, urgent follow-up handling, and priority response for unresolved operational problems.' }
+              { icon: Smartphone, color: '#4A7FD4', bg: 'rgba(74,127,212,0.12)', t: 'Extra Social Media Content', d: 'Additional branded content creation, posting, and engagement support for stronger local visibility.' },
+              { icon: Clock, color: '#7B5EA7', bg: 'rgba(123,94,167,0.12)', t: '24/7 Coverage', d: 'Extended operational monitoring for urgent issues, late-night problems, and continuous oversight.' },
+              { icon: Zap, color: '#E8921A', bg: 'rgba(232,146,26,0.12)', t: 'Priority Escalation Support', d: 'Faster issue escalation, urgent follow-up handling, and priority response for unresolved operational problems.' }
             ].map((i, idx) => {
               const Icon = i.icon;
               return (
                 <motion.div key={idx} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="bg-[#111422] border border-[rgba(255,255,255,0.07)] rounded-[16px] p-8 flex flex-col items-start gap-4 hover:border-[rgba(255,255,255,0.15)] transition-colors duration-300">
                   <div className="w-[48px] h-[48px] rounded-[12px] flex items-center justify-center shrink-0" style={{ backgroundColor: i.bg, color: i.color }}><Icon size={24} /></div>
                   <h3 className="font-bold text-[1rem] text-white my-1">{i.t}</h3>
-                  <div className="px-[14px] py-[4px] rounded-[50px] border text-[11px] font-bold uppercase tracking-[0.1em]" style={{ background: 'linear-gradient(135deg, rgba(74,127,212,0.1), rgba(123,94,167,0.1), rgba(232,146,26,0.1))', borderColor: i.color, color: i.color }}>
-                     {i.p}
-                  </div>
                   <p className="text-[13.5px] text-[#7A82A0] leading-[1.75] mb-6 flex-1 mt-2">{i.d}</p>
-                  <a href={`mailto:bringit.bpo@gmail.com?subject=Add-On Inquiry — ${i.t}`} className="mt-auto text-[12px] font-bold uppercase tracking-[0.1em] text-[#4A7FD4] hover:text-[#3A8DFF] transition-colors">INQUIRE NOW →</a>
+                  <a href={whatsappLink(`Hi! I'm interested in the ${i.t} add-on. Can you share pricing?`)} target="_blank" rel="noopener noreferrer" className="mt-auto text-[12px] font-bold uppercase tracking-[0.1em] text-[#4A7FD4] hover:text-[#3A8DFF] transition-colors">GET PRICING ON WHATSAPP →</a>
                 </motion.div>
               );
             })}
@@ -562,7 +546,7 @@ useEffect(() => {
               { q: 'Do you work with franchises?', a: 'Yes. We have hands-on experience with Cold Stone, Dunkin\', Baskin Robbins, Charleys, Domino\'s, and Papa John\'s. We understand franchise compliance and operational pressure.' },
               { q: 'Can you support multiple locations?', a: 'Absolutely. Our Premium package is built for multi-store operators with cross-location reporting, executive summaries, and dedicated account management.' },
               { q: 'Do you handle delivery app disputes?', a: 'Yes. We dispute false refund claims on UberEats, DoorDash, and Grubhub up to platform limits, track recovery weekly, and report exactly what was saved.' },
-              { q: 'Is this only for large restaurants?', a: 'Not at all. Our Starter at $149/month is for single-store owners. The problems we solve affect every size of operation.' },
+              { q: 'Is this only for large restaurants?', a: 'Not at all. Our Starter package is built for single-store owners. The problems we solve affect every size of operation.' },
               { q: 'Who has access to my store systems?', a: 'Access is handled personally by Fahad Siddique, the BringIT founder. Sensitive credentials are never shared without your explicit approval.' },
             ].map((faq, i) => <FaqItem key={i} q={faq.q} a={faq.a} />)}
           </div>
@@ -589,11 +573,18 @@ useEffect(() => {
              <p className="text-[14.5px] text-[#7A82A0] leading-relaxed mb-10">Book a free 15-minute strategy call. We'll identify your biggest operational gaps and show you exactly how BringIT can protect your revenue — no pressure, no commitment.</p>
              
              <div className="space-y-6 mb-12">
-                <a href="https://wa.me/8801351656330?text=Hi, I'd like to learn more about BringIT" target="_blank" className="flex items-center gap-4 group">
+                <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
                   <div className="w-12 h-12 bg-[#25D366]/5 border border-[#25D366]/20 rounded-xl flex justify-center items-center group-hover:bg-[#25D366]/20 text-[#25D366] transition-colors"><MessageCircle size={20} /></div>
                   <div>
                     <div className="text-[10px] font-bold uppercase tracking-widest text-[#7A82A0] mb-1">WhatsApp</div>
-                    <div className="text-[15px] font-medium group-hover:text-white transition-colors">+880 1351-656330</div>
+                    <div className="text-[15px] font-medium group-hover:text-white transition-colors">{WHATSAPP_DISPLAY}</div>
+                  </div>
+                </a>
+                <a href={`tel:${US_PHONE_TEL}`} className="flex items-center gap-4 group">
+                  <div className="w-12 h-12 bg-[#E8921A]/5 border border-[#E8921A]/20 rounded-xl flex justify-center items-center group-hover:bg-[#E8921A]/20 text-[#E8921A] transition-colors"><Phone size={20} /></div>
+                  <div>
+                    <div className="text-[10px] font-bold uppercase tracking-widest text-[#7A82A0] mb-1">US Phone</div>
+                    <div className="text-[15px] font-medium group-hover:text-white transition-colors">{US_PHONE_DISPLAY}</div>
                   </div>
                 </a>
                 <a href="mailto:bringit.bpo@gmail.com" className="flex items-center gap-4 group">
@@ -631,7 +622,7 @@ useEffect(() => {
             <div className="flex gap-6 text-[12px] font-medium uppercase tracking-wider text-[var(--soft)]">
                <a href="#" className="hover:text-white">Home</a>
                <a href="#services" className="hover:text-white">Services</a>
-               <a href="#pricing" className="hover:text-white">Pricing</a>
+               <a href="#pricing" className="hover:text-white">Packages</a>
                <a href="#contact" className="hover:text-white">Contact</a>
             </div>
          </div>
@@ -645,14 +636,7 @@ useEffect(() => {
                   <button onClick={() => setIsAuthModalOpen(false)} className="absolute top-6 right-6 text-[var(--muted)] hover:text-white"><X size={20}/></button>
                   <h3 className="font-serif text-3xl font-bold mb-2">Welcome <span className="italic text-gradient">Partner</span></h3>
                   <div className="mb-8">
-                    {selectedPackage ? (
-                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-[rgba(123,94,167,0.1)] border border-[rgba(123,94,167,0.3)] rounded-full text-[11px] font-bold text-[var(--purple)] uppercase tracking-wider">
-                        <span>Selected Package: </span>
-                        <span className="text-white">{selectedPackage}</span>
-                      </div>
-                    ) : (
-                      <p className="text-[13.5px] text-[var(--muted)]">Please log in to continue</p>
-                    )}
+                    <p className="text-[13.5px] text-[var(--muted)]">Please log in to continue</p>
                   </div>
                   
                   <button onClick={handleLogin} className="w-full bg-white text-black font-semibold py-3.5 rounded-full flex items-center justify-center gap-3 hover:bg-gray-100 transition-colors">
@@ -665,46 +649,6 @@ useEffect(() => {
          )}
       </AnimatePresence>
 
-      {/* Package Contact Modal */}
-      <AnimatePresence>
-         {isContactModalOpen && user && (
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-[100] modal-overlay flex items-center justify-center p-4" onClick={(e) => { if(e.target === e.currentTarget) setIsContactModalOpen(false) }}>
-               <motion.div initial={{ scale: 0.95, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.95, opacity: 0 }} className="w-full max-w-[480px] bg-[var(--dark2)] border border-[rgba(255,255,255,0.12)] rounded-3xl p-10 relative flex flex-col">
-                  <button onClick={() => setIsContactModalOpen(false)} className="absolute top-6 right-6 text-[var(--muted)] hover:text-white"><X size={20}/></button>
-                  <h3 className="font-serif text-3xl font-bold mb-1">Let's Get <span className="italic text-gradient">Started</span></h3>
-                  <p className="text-[#a1a1aa] mb-8 text-[13.5px]">Selected Package: <strong className="text-white ml-1">{selectedPackage}</strong></p>
-                  
-                  <div className="flex flex-col gap-4">
-                     <a href={`https://wa.me/8801351656330?text=Hi! I'm interested in the ${selectedPackage} package. Can we talk?`} target="_blank" className="bg-[rgba(255,255,255,0.03)] border border-white/5 hover:border-[rgba(37,211,102,0.4)] hover:bg-[rgba(37,211,102,0.05)] rounded-2xl p-5 transition-colors flex items-center gap-4 group">
-                        <div className="w-12 h-12 rounded-full bg-[#25D366]/10 text-[#25D366] flex shrink-0 justify-center items-center group-hover:scale-110 transition-transform"><MessageCircle /></div>
-                        <div>
-                           <div className="font-bold text-white mb-0.5">WhatsApp Us</div>
-                           <div className="text-[12px] text-[var(--muted)]">Fastest response — usually within a few hours</div>
-                        </div>
-                     </a>
-
-                     <a href={`mailto:bringit.bpo@gmail.com?subject=BringIT Package Inquiry — ${selectedPackage}`} target="_blank" className="bg-[rgba(255,255,255,0.03)] border border-white/5 hover:border-[rgba(74,127,212,0.4)] hover:bg-[rgba(74,127,212,0.05)] rounded-2xl p-5 transition-colors flex items-center gap-4 group">
-                        <div className="w-12 h-12 rounded-full bg-[var(--blue)]/10 text-[var(--blue)] flex shrink-0 justify-center items-center group-hover:scale-110 transition-transform"><Mail /></div>
-                        <div>
-                           <div className="font-bold text-white mb-0.5">Send an Email</div>
-                           <div className="text-[12px] text-[var(--muted)]">We reply within 24 hours</div>
-                        </div>
-                     </a>
-                  </div>
-
-                  <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between">
-                     <div className="flex items-center gap-2">
-                        <img src={user.photoURL || ''} alt="User" className="w-6 h-6 rounded-full opacity-60" />
-                        <div className="flex flex-col text-[10px] text-[var(--muted)] leading-tight">
-                           <span>Signed in as {user.displayName}</span>
-                           <span>{user.email}</span>
-                        </div>
-                     </div>
-                  </div>
-               </motion.div>
-            </motion.div>
-         )}
-      </AnimatePresence>
     </div>
   );
 }

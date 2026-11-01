@@ -1,33 +1,29 @@
 import { motion } from 'motion/react';
 import React from 'react';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, MessageCircle, Phone } from 'lucide-react';
+import { whatsappLink, WHATSAPP_DISPLAY, US_PHONE_TEL, US_PHONE_DISPLAY } from '../../lib/contact';
 
 // Pricing options using BringIT branding packages
 // Option 1: Starter, Option 2: Growth, Option 3: Premium
 
-export const SquishyPricing = ({
-  onPackageClick
-}: {
-  onPackageClick: (pkg: string) => void
-}) => {
+export const SquishyPricing = () => {
   return (
     <section id="pricing" className="bg-[#07090F] px-[6%] py-24 min-h-[50vh] transition-colors relative overflow-hidden">
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#4A7FD4]/5 blur-[150px] rounded-full pointer-events-none"></div>
       
       <div className="max-w-7xl mx-auto relative z-10 flex flex-col items-center">
         <div className="text-center mb-16">
-          <span className="text-[10px] uppercase text-[#4A7FD4] tracking-widest font-bold mb-4 block">PRICING</span>
+          <span className="text-[10px] uppercase text-[#4A7FD4] tracking-widest font-bold mb-4 block">PACKAGES</span>
           <h2 className="font-serif text-4xl md:text-5xl font-bold mt-4 mb-2 text-white" style={{ fontFamily: 'Georgia, serif' }}>
-            Pricing <span style={{ backgroundImage: 'linear-gradient(135deg, #4A7FD4, #7B5EA7, #E8921A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', color: 'transparent' }}>Built For Scale</span>
+            Packages <span style={{ backgroundImage: 'linear-gradient(135deg, #4A7FD4, #7B5EA7, #E8921A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', color: 'transparent' }}>Built For Scale</span>
           </h2>
-          <div className="text-[13px] uppercase tracking-widest font-bold text-[#7A82A0] mb-6">PER MONTH PER STORE</div>
+          <div className="text-[13px] uppercase tracking-widest font-bold text-[#7A82A0] mb-6">Message us on WhatsApp for pricing</div>
           <p className="text-[#7A82A0] max-w-2xl mx-auto leading-relaxed text-sm">Every package includes the same dedication — scaled to your operation. Saturday to Thursday, assigned daily time windows per store.</p>
         </div>
 
         <div className="mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl justify-items-center">
           <PricingCard
             label="Starter"
-            monthlyPrice="149"
             audience="Single-store owners"
             description="Essential visibility and core operations support."
             features={[
@@ -40,15 +36,14 @@ export const SquishyPricing = ({
               { text: 'Task tracking' },
               { text: 'Limited support' }
             ]}
-            cta="Get Started"
-            onClick={() => onPackageClick('Starter')}
+            cta="Get Starter Pricing"
+            href={whatsappLink("Hi! I'm interested in the Starter package. Can you share pricing?")}
             background="bg-[#111422] border-[rgba(255,255,255,0.07)]"
             accentColor="#4A7FD4"
             BGComponent={BGComponent1}
           />
           <PricingCard
             label="Growth"
-            monthlyPrice="299"
             audience="Busy owners needing full control"
             description="Comprehensive management for growing restaurants."
             features={[
@@ -62,8 +57,8 @@ export const SquishyPricing = ({
               { text: 'Weekly owner summary' },
               { text: 'Light social media support' }
             ]}
-            cta="Book Strategy Call"
-            onClick={() => onPackageClick('Growth')}
+            cta="Get Growth Pricing"
+            href={whatsappLink("Hi! I'm interested in the Growth package. Can you share pricing?")}
             background="bg-[#0C0E18] border-[#7B5EA7]/40 shadow-[0_0_30px_rgba(123,94,167,0.15)]"
             accentColor="#7B5EA7"
             isPopular={true}
@@ -71,7 +66,6 @@ export const SquishyPricing = ({
           />
           <PricingCard
             label="Premium"
-            monthlyPrice="499"
             audience="Multi-store operators"
             description="Mission-critical concierge for maximum oversight."
             features={[
@@ -86,12 +80,22 @@ export const SquishyPricing = ({
               { text: 'Expansion support' },
               { text: 'Dedicated account manager' }
             ]}
-            cta="Inquire About Premium"
-            onClick={() => onPackageClick('Premium')}
+            cta="Get Premium Pricing"
+            href={whatsappLink("Hi! I'm interested in the Premium package. Can you share pricing?")}
             background="bg-[#111422] border-[rgba(255,255,255,0.07)]"
             accentColor="#E8921A"
             BGComponent={BGComponent3}
           />
+        </div>
+
+        <div className="mt-14 w-full max-w-3xl flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10 bg-[#0C0E18] border border-white/5 rounded-2xl p-6 text-center">
+          <span className="text-[13px] text-[#B0B8D0]">Questions about pricing? Reach us directly:</span>
+          <a href={whatsappLink("Hi! I'd like to know more about BringIT pricing.")} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-[14px] font-semibold text-white hover:text-[#25D366] transition-colors">
+            <MessageCircle size={16} className="text-[#25D366]" /> WhatsApp {WHATSAPP_DISPLAY}
+          </a>
+          <a href={`tel:${US_PHONE_TEL}`} className="flex items-center gap-2 text-[14px] font-semibold text-white hover:text-[#4A7FD4] transition-colors">
+            <Phone size={16} className="text-[#4A7FD4]" /> US {US_PHONE_DISPLAY}
+          </a>
         </div>
       </div>
     </section>
@@ -100,7 +104,6 @@ export const SquishyPricing = ({
 
 interface PricingCardProps {
   label: string;
-  monthlyPrice: string;
   audience: string;
   description: string;
   features: { text: string; bold?: boolean }[];
@@ -108,17 +111,17 @@ interface PricingCardProps {
   background: string;
   accentColor: string;
   isPopular?: boolean;
-  onClick: () => void;
+  href: string;
   BGComponent: React.ComponentType;
 }
 
-const PricingCard = ({ label, monthlyPrice, description, audience, features, cta, background, accentColor, isPopular, onClick, BGComponent }: PricingCardProps) => {
+const PricingCard = ({ label, description, audience, features, cta, background, accentColor, isPopular, href, BGComponent }: PricingCardProps) => {
   return (
     <motion.div
       whileHover="hover"
       transition={{ duration: 1, ease: "backInOut" }}
       variants={{ hover: { scale: 1.02, translateY: -5 } }}
-      className={`relative min-h-[680px] w-full max-w-[360px] shrink-0 overflow-hidden rounded-[24px] p-8 lg:p-10 border ${background} shadow-2xl transition-shadow group flex flex-col`}
+      className={`relative min-h-[600px] w-full max-w-[360px] shrink-0 overflow-hidden rounded-[24px] p-8 lg:p-10 border ${background} shadow-2xl transition-shadow group flex flex-col`}
     >
       {isPopular && (
         <div className="absolute top-4 right-4 bg-gradient-to-r from-[#4A7FD4] to-[#7B5EA7] text-white text-[9px] uppercase font-bold tracking-widest px-3 py-1.5 rounded-full z-20 shadow-lg shadow-purple-500/20">
@@ -129,14 +132,6 @@ const PricingCard = ({ label, monthlyPrice, description, audience, features, cta
         <div className="font-serif italic text-2xl md:text-3xl font-bold uppercase mb-4" style={{ color: accentColor, fontFamily: 'Georgia, serif' }}>
           {label}
         </div>
-        <motion.span
-          initial={{ scale: 0.95 }}
-          variants={{ hover: { scale: 1 } }}
-          transition={{ duration: 1, ease: "backInOut" }}
-          className="mb-2 block origin-top-left font-serif text-[3.2rem] font-bold leading-[1.1]"
-        >
-          ${monthlyPrice}<span className="text-lg text-[#7A82A0] font-sans">/mo</span>
-        </motion.span>
         <div className="text-[13px] font-semibold mb-2" style={{ color: accentColor }}>{audience}</div>
         <p className="text-[13px] text-[#B0B8D0] leading-[1.7] mb-8">{description}</p>
         
@@ -149,16 +144,19 @@ const PricingCard = ({ label, monthlyPrice, description, audience, features, cta
           ))}
         </div>
 
-        <button 
-          onClick={onClick}
-          className="mt-auto relative z-20 w-full rounded-xl border border-white/10 bg-white/5 py-3.5 text-center font-bold text-[13px] uppercase tracking-wide text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/15 hover:border-white/30"
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-auto flex items-center justify-center gap-2 relative z-20 w-full rounded-xl border border-white/10 bg-white/5 py-3.5 text-center font-bold text-[13px] uppercase tracking-wide text-white backdrop-blur-sm transition-all duration-300 hover:bg-white/15 hover:border-white/30"
           style={isPopular ? {
             background: 'linear-gradient(135deg, rgba(74,127,212,0.9), rgba(123,94,167,0.9))',
             borderColor: 'rgba(255,255,255,0.2)'
           } : {}}
         >
+          <MessageCircle size={16} />
           {cta}
-        </button>
+        </a>
       </div>
       <div className="opacity-40 group-hover:opacity-100 transition-opacity duration-700" style={{ color: accentColor }}>
         <BGComponent />
