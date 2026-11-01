@@ -18,7 +18,7 @@ export const SquishyPricing = () => {
             Packages <span style={{ backgroundImage: 'linear-gradient(135deg, #4A7FD4, #7B5EA7, #E8921A)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', color: 'transparent' }}>Built For Scale</span>
           </h2>
           <div className="text-[13px] uppercase tracking-widest font-bold text-[#7A82A0] mb-6">Message us on WhatsApp for pricing</div>
-          <p className="text-[#7A82A0] max-w-2xl mx-auto leading-relaxed text-sm">Every package includes the same dedication — scaled to your operation. Saturday to Thursday, assigned daily time windows per store.</p>
+          <p className="text-[#7A82A0] max-w-2xl mx-auto leading-relaxed text-sm">Every package includes the same dedication, scaled to your operation. Coverage 7 days a week, with assigned daily time windows per store.</p>
         </div>
 
         <div className="mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-6xl justify-items-center">
