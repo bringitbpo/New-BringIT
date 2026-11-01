@@ -10,8 +10,10 @@ Marketing site for BringIT, a remote operations and revenue control service for 
 - Originally scaffolded in Google AI Studio (README and `.env.example` still reference Gemini; the site does not need a Gemini key to run).
 
 ## Layout
-- `src/App.tsx` — almost the whole site (~780 lines): nav, hero, `#services`, `#about`, `#contact`, footer, auth
-- `src/components/ui/squishy-pricing.tsx` — pricing cards
+- `src/App.tsx` — almost the whole site: nav, hero, `#services`, `#about`, `#contact`, footer, auth
+- `src/components/ui/squishy-pricing.tsx` — package cards (no prices shown; buttons open WhatsApp)
+- `src/components/FaqItem.tsx`, `src/components/ContactForm.tsx` — FAQ accordion item, Formspree contact form
+- `src/lib/contact.ts` — WhatsApp / US phone / email constants used across the site
 - `src/components/ui/container-scroll-animation.tsx` — scroll animation
 - `src/public/LOGO_1_1_no_BG.png`, `public/LOGO_1_1_no_BG.png` — logo
 
@@ -22,10 +24,10 @@ Marketing site for BringIT, a remote operations and revenue control service for 
 - `npm run lint` — type check (`tsc --noEmit`)
 
 ## Business facts (keep copy consistent)
-- Pricing: Starter $149/mo, Growth $299/mo, Premium $499/mo, plus add-ons
+- Pricing: not shown on the site. Packages (Starter, Growth, Premium) and add-ons are listed without prices; visitors are sent to WhatsApp for pricing
 - Services: review management, platform monitoring (DoorDash, UberEats, GrubHub, OLO), complaint/dispute handling, staff accountability, owner reporting, social media, scheduling, bill tracking, procurement coordination, multi-store reporting
 - Founder background: 5+ years managing U.S. franchise brands remotely (Dunkin', Cold Stone Creamery, Baskin Robbins, Charleys Cheesesteaks, Domino's, Papa John's)
-- Contact: bringit.bpo@gmail.com · US +1 516-231-2330 · WhatsApp +880 1351-656330
+- Contact: bringit.bpo@gmail.com · US +1 516-341-1071 · WhatsApp +880 1351-656330
 - Branding: dark matte background with orange accent
 
 ## Working with Fahad
