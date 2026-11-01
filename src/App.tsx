@@ -83,7 +83,7 @@ useEffect(() => {
   };
 
   return (
-    <div className="relative min-h-screen bg-[var(--dark)] text-[var(--text)] selection:bg-[var(--purple)] selection:text-white">
+    <div className="relative min-h-screen overflow-x-clip bg-[var(--dark)] text-[var(--text)] selection:bg-[var(--purple)] selection:text-white">
       {/* Navigation */}
       <nav className="fixed top-0 left-0 w-full h-[72px] z-50 flex items-center justify-between px-6 md:px-12 bg-[#07090F]/82 backdrop-blur-[24px] border-b border-white/5 transition-all">
         <div className="w-full max-w-7xl mx-auto flex items-center justify-between">
