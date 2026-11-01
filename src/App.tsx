@@ -469,11 +469,10 @@ useEffect(() => {
                <span className="text-[10px] uppercase text-[#7B5EA7] tracking-widest font-bold mb-4 block">TESTIMONIALS</span>
                <h2 className="font-serif text-4xl md:text-5xl font-bold mt-4" style={{ fontFamily: 'Georgia, serif' }}>What Restaurant Owners Say</h2>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
                {[
-                 { q: "BringIT changed my life. I finally have my weekends back knowing they are catching every missed online order.", n: "S. Harris", r: "Multi-unit Franchisee" },
-                 { q: "We found over $2,000 in monthly labor waste just in early clock-ins within the first 30 days of using BringIT. Incredible.", n: "J. Martinez", r: "Restaurant Owner" },
-                 { q: "Honestly, I was tired of being involved in every little problem. Now I focus on opening new locations and bigger plans. I just have one weekly meeting with BringIT and my store manager, and they handle the rest. Life is much easier now.", n: "Arshad", r: "MULTI-UNIT OPERATOR" }
+                 { q: "Honestly, I was tired of being involved in every little problem. Now I focus on opening new locations and bigger plans. I just have one weekly meeting with BringIT and my store manager, and they handle the rest. Life is much easier now.", n: "Arshad", r: "MULTI-UNIT OPERATOR" },
+                 { q: "It's wonderful to have them on my team.", n: "Waliul", r: "BringIT Client" }
                ].map((t, idx) => (
                   <motion.div key={idx} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: idx * 0.1 }} className="bg-[#111422] border border-white/5 rounded-[20px] p-8 flex flex-col shadow-xl shadow-black/40">
                      <div className="text-[#E8921A] mb-4 text-sm tracking-widest">★★★★★</div>
