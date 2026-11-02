@@ -1,8 +1,8 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'motion/react';
+import React, { useRef } from 'react';
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'motion/react';
 import {
   LayoutDashboard, Building2, Store, Users, ListChecks, FolderCheck, Bell, CalendarClock, FileText,
-  Calendar, Sparkles, Star, User, CheckSquare, Paperclip, RefreshCw,
+  Calendar, Sparkles, Star, User, CheckSquare, Paperclip, RefreshCw, Wifi, BadgeDollarSign,
 } from 'lucide-react';
 
 const MENU = [
@@ -23,13 +23,38 @@ const TASKS = [
 export function OpsTablet() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'start 0.25'] });
-  const rotateX = useTransform(scrollYProgress, [0, 1], [18, 0]);
+  const scrollTilt = useTransform(scrollYProgress, [0, 1], [18, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], [1.03, 1]);
 
+  // Gentle 3D tilt that follows the cursor (desktop only).
+  const mx = useSpring(useMotionValue(0), { stiffness: 120, damping: 20 });
+  const my = useSpring(useMotionValue(0), { stiffness: 120, damping: 20 });
+  const rotateX = useTransform([scrollTilt, my], ([s, y]: number[]) => s - y * 4);
+  const rotateY = useTransform(mx, (x) => x * 5);
+  const floatA = useTransform(mx, (x) => x * -18);
+  const floatB = useTransform(mx, (x) => x * 22);
+  const floatY = useTransform(my, (y) => y * -14);
+  const onMove = (e: React.PointerEvent) => {
+    if (e.pointerType !== 'mouse') return;
+    const r = e.currentTarget.getBoundingClientRect();
+    mx.set((e.clientX - r.left) / r.width - 0.5);
+    my.set((e.clientY - r.top) / r.height - 0.5);
+  };
+  const onLeave = () => { mx.set(0); my.set(0); };
+
   return (
-    <div className="tabsec" ref={ref}>
-      <div className="wrap">
-        <motion.div className="tablet" style={{ rotateX, scale }}>
+    <div className="tabsec" ref={ref} onPointerMove={onMove} onPointerLeave={onLeave}>
+      <div className="wrap tabwrap">
+        <motion.div className="glass toast t1" style={{ x: floatA, y: floatY }} aria-hidden="true">
+          <span className="ti ok"><Wifi /></span><div><b>Uber Eats back online</b><small>Store 2 · caught in 12 min</small></div>
+        </motion.div>
+        <motion.div className="glass toast t2" style={{ x: floatB, y: floatY }} aria-hidden="true">
+          <span className="ti money"><BadgeDollarSign /></span><div><b>Dispute won · +$46.20</b><small>DoorDash · added to payout</small></div>
+        </motion.div>
+        <motion.div className="glass toast t3" style={{ x: floatA, y: floatY }} aria-hidden="true">
+          <span className="ti star"><Star /></span><div><b>5-star review answered</b><small>Store 3 · 2 min ago</small></div>
+        </motion.div>
+        <motion.div className="tablet" style={{ rotateX, rotateY, scale }}>
           <div className="ops" role="img" aria-label="Sample view of the BringIT Ops platform showing completed tasks with proof">
             <aside className="side">
               <div className="logo"><img src="/LOGO_1_1_no_BG.png" alt="" /></div>

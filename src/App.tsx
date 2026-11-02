@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
 import './site.css';
+import './effects.css';
+import { useSiteEffects } from './components/site/useSiteEffects';
 import { Nav } from './components/site/Nav';
 import { Hero, Strips } from './components/site/Hero';
 import { OpsTablet } from './components/site/OpsTablet';
@@ -32,6 +34,7 @@ export default function App() {
   const [booking, setBooking] = useState(false);
   const isPrivacy = usePrivacyRoute();
   const openBooking = () => setBooking(true);
+  useSiteEffects([isPrivacy]);
 
   return (
     <div className="site">

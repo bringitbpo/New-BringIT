@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { motion, useScroll } from 'motion/react';
 import { whatsappLink } from '../../lib/contact';
 
 const LINKS = [
@@ -13,6 +14,7 @@ const LINKS = [
 
 export function Nav({ onBook }: { onBook: () => void }) {
   const [open, setOpen] = useState(false);
+  const { scrollYProgress } = useScroll();
   return (
     <header className="nav">
       <div className="wrap in">
@@ -30,6 +32,7 @@ export function Nav({ onBook }: { onBook: () => void }) {
           <a href={whatsappLink("Hi! I'd like to know more about BringIT pricing.")} target="_blank" rel="noopener noreferrer">Get pricing on WhatsApp</a>
         </nav>
       )}
+      <motion.div className="progress" style={{ scaleX: scrollYProgress }} />
     </header>
   );
 }
