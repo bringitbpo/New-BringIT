@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import './site.css';
 import './effects.css';
+import './mobile.css';
 import { useSiteEffects } from './components/site/useSiteEffects';
 import { Nav } from './components/site/Nav';
 import { Hero, Strips } from './components/site/Hero';
