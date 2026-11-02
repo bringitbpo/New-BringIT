@@ -12,7 +12,7 @@ export const hero = {
 };
 
 export const platforms = ['Uber Eats', 'DoorDash', 'Grubhub', 'OLO', 'ezCater', 'Shift4', 'Google Reviews', 'Yelp', 'Instagram', 'Franchisor portals'];
-export const brands = ["Dunkin'", 'Cold Stone Creamery', 'Baskin Robbins', 'Charleys', "Domino's", "Papa John's"];
+export const brands = ["Dunkin'", 'Cold Stone Creamery', 'Baskin Robbins', 'Charleys', "Wetzel's Pretzels"];
 
 // Sample results. Replace with real figures when available.
 export const results = {
@@ -94,7 +94,7 @@ export const leader = {
   name: 'Fahad Siddique',
   title: 'Founder & CEO',
   bio: [
-    'Fahad has spent more than six years managing restaurant operations for U.S. franchisees, across brands like Dunkin’, Cold Stone Creamery, Baskin Robbins, Charleys, Domino’s and Papa John’s.',
+    'Fahad has spent more than six years managing restaurant operations for U.S. franchisees, across brands like Dunkin’, Cold Stone Creamery, Baskin Robbins, Charleys and Wetzel’s Pretzels.',
     'He knows franchise systems, portals and vendor processes inside out, and franchisees often rely on that knowledge to run their stores. He built BringIT to bring the same discipline to every client.',
   ],
 };
@@ -127,7 +127,7 @@ export const testimonial = {
 
 export const faqs = [
   { q: 'Are you replacing my manager?', a: 'No. We support your managers from behind the scenes and make sure every task is followed up.' },
-  { q: 'Do you work with franchises?', a: 'Yes. Our experience covers Dunkin’, Cold Stone Creamery, Baskin Robbins, Charleys, Domino’s and Papa John’s, including franchisor portals.' },
+  { q: 'Do you work with franchises?', a: 'Yes. Our experience covers Dunkin’, Cold Stone Creamery, Baskin Robbins, Charleys and Wetzel’s Pretzels, including franchisor portals.' },
   { q: 'Do you handle chargebacks?', a: 'Yes, both card chargebacks through your POS or payment processor and disputes on delivery apps.' },
   { q: 'Is there a long-term contract?', a: 'No. All plans are month to month.' },
   { q: 'How fast can we start?', a: 'Setup is short. Once you approve access, daily operations begin right away.' },
