@@ -1,8 +1,11 @@
 import { hero, platforms, brands } from '../../content/site';
+import { HeroBackdrop } from './HeroBackdrop';
 
 export function Hero({ onBook }: { onBook: () => void }) {
   return (
-    <div className="wrap" id="top">
+    <div className="hero-shell" id="top">
+      <HeroBackdrop />
+      <div className="wrap">
       <div className="hero">
         <div>
           <div className="label">{hero.label}</div>
@@ -16,6 +19,7 @@ export function Hero({ onBook }: { onBook: () => void }) {
         <div className="facts">
           {hero.facts.map((f) => <div key={f.label}><b>{f.value}</b><span>{f.label}</span></div>)}
         </div>
+      </div>
       </div>
     </div>
   );
