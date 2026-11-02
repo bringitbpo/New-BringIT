@@ -27,7 +27,7 @@ Marketing site for BringIT, a remote operations and revenue control service for 
 ## Business facts (keep copy consistent)
 - Pricing: not shown on the site. Packages (Starter, Growth, Premium) and add-ons are listed without prices; visitors are sent to WhatsApp for pricing
 - Services: review management, platform monitoring (DoorDash, UberEats, GrubHub, OLO), complaint/dispute handling, staff accountability, owner reporting, social media, scheduling, bill tracking, procurement coordination, multi-store reporting
-- Founder background: 5+ years managing U.S. franchise brands remotely (Dunkin', Cold Stone Creamery, Baskin Robbins, Charleys Cheesesteaks, Domino's, Papa John's)
+- Founder background: 5+ years managing U.S. franchise brands remotely (Dunkin', Cold Stone Creamery, Baskin Robbins, Charleys Cheesesteaks, Wetzel's Pretzels)
 - Contact: bringit.bpo@gmail.com · US +1 516-341-1071 · WhatsApp +880 1351-656330
 - Branding: light, professional design (white/grey, navy buttons, orange accent)
 - Team: remote team working U.S. hours; departments are Operations, Marketing and Finance. Don't mention Dhaka, team size or founding year

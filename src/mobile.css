@@ -1,0 +1,166 @@
+/* Phone layout tuning. Loaded last so it refines site.css and effects.css on small screens. */
+@media (max-width: 700px) {
+  html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  .wrap { padding: 0 18px; }
+  .sec { padding: 56px 0; }
+  .label { font-size: 11px; margin-bottom: 10px; letter-spacing: .1em; }
+  .h2 { font-size: 26px; line-height: 1.15; letter-spacing: -.02em; }
+  .lead { font-size: 15.5px; line-height: 1.6; margin-top: 12px; }
+
+  /* nav */
+  .nav .in { height: 60px; gap: 10px; }
+  .nav img { height: 30px; }
+  .nav .acts { gap: 6px; align-items: center; }
+  .nav .acts .btn.accent { padding: 8px 14px; font-size: 13.5px; white-space: nowrap; border-radius: 7px; }
+  .mnav a { font-size: 15px; padding: 9px 0; }
+
+  /* buttons */
+  .btn { padding: 12px 18px; font-size: 14.5px; }
+
+  /* hero */
+  .hero { padding: 34px 0 6px; gap: 26px; }
+  .hero h1 { font-size: 32px; line-height: 1.1; letter-spacing: -.03em; }
+  .hero .sub { font-size: 15.5px; margin-top: 16px; }
+  .hero .ctas { margin-top: 22px; gap: 10px; }
+  .facts { grid-template-columns: 1fr; gap: 0; padding: 6px 16px; border-radius: 14px; border-top: 1px solid rgba(255,255,255,.8); }
+  .facts > div { display: flex; align-items: baseline; gap: 10px; padding: 10px 0; }
+  .facts > div + div { border-top: 1px solid rgba(15,42,74,.08); }
+  .facts b { font-size: 17px; flex: none; min-width: 112px; }
+  .facts span { font-size: 13px; line-height: 1.35; }
+
+  /* tablet */
+  .tabsec { padding: 18px 0 10px; }
+  .tablet { border-radius: 16px; padding: 6px; }
+  .ops { border-radius: 11px; font-size: 12px; }
+  .ops .main { padding: 12px; gap: 10px; }
+  .ops .head h4 { font-size: 15px; }
+  .ops .head small { font-size: 11.5px; }
+  .ops .pillbtn { padding: 5px 8px; font-size: 11px; }
+  .ops .k { padding: 9px 10px; }
+  .ops .k span { font-size: 10.5px; }
+  .ops .k b { font-size: 17px; }
+  .ops .k em { font-size: 10px; }
+  .ops .task { padding: 9px 10px; }
+  .ops .task b { font-size: 12.5px; }
+  .ops .task small { font-size: 11px; gap: 2px 8px; }
+  .ops .task:nth-of-type(n+4) { display: none; }
+  .sample { font-size: 11px; margin-top: 10px; }
+
+  /* platform and brand strips: one swipeable line each */
+  .strip { flex-wrap: nowrap; overflow-x: auto; gap: 20px; padding: 14px 0; font-size: 12px; scrollbar-width: none; -webkit-overflow-scrolling: touch; mask-image: linear-gradient(90deg, #000 85%, transparent); -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); }
+  .strip::-webkit-scrollbar { display: none; }
+  .strip > * { flex: none; white-space: nowrap; }
+
+  /* services: icon beside the title to save space */
+  .svc { margin-top: 30px; }
+  .sv { padding: 18px 18px 16px; display: grid; grid-template-columns: 36px 1fr; column-gap: 12px; align-items: start; }
+  .sv > svg { width: 22px; height: 22px; margin: 2px 0 0; grid-row: span 2; }
+  .sv h3 { font-size: 15.5px; margin-bottom: 3px; }
+  .sv p { font-size: 14px; }
+  .sv .xp-toggle, .sv .xp-body { grid-column: 2; }
+  .xp-toggle { margin-top: 10px; font-size: 13px; }
+  .xp li { font-size: 13.5px; }
+  .results { margin-top: 30px; }
+  .results div { padding: 16px 16px; }
+  .results b { font-size: 22px; }
+  .results span { font-size: 12.5px; }
+
+  /* split sections */
+  .split, .about-top, .secgrid, .faqgrid, .contact { gap: 30px; }
+  .steps { margin-top: 20px; }
+  .st { grid-template-columns: 34px 1fr; padding: 13px 0; gap: 8px; }
+  .st b { font-size: 15px; }
+  .st p { font-size: 14px; }
+  .disp { padding: 18px; }
+  .disp .hd b { font-size: 14.5px; }
+  .disp .hd small { font-size: 12px; }
+  .ev { gap: 10px; padding: 7px 0; }
+  .ev b { font-size: 13.5px; }
+  .ev p, .ev em { font-size: 12px; }
+  .mini { padding: 14px 16px; }
+  .mini b { font-size: 19px; }
+
+  /* how we work */
+  .flow { margin-top: 30px; row-gap: 18px; }
+  .flow > div { padding-top: 16px; }
+  .flow b { font-size: 15.5px; }
+  .flow p { font-size: 14px; }
+  .principles { margin-top: 28px; gap: 10px; }
+  .pr { padding: 16px 18px; }
+  .pr b { font-size: 15px; }
+  .pr p { font-size: 14px; margin-top: 6px; }
+  .channels { font-size: 13.5px; gap: 12px; }
+
+  /* report: single page, no overflow */
+  .doc { height: auto; }
+  .paper.back { display: none; }
+  .paper.front, .doc.in .paper.front { position: relative; left: 0; top: 0; width: 100%; transform: none; padding: 22px 20px; }
+  .paper .h b { font-size: 15px; }
+  .paper .g b { font-size: 16px; }
+  .paper li { font-size: 13px; }
+
+  /* about */
+  .about-top p { font-size: 15px; }
+  .sub-h { font-size: 18px; margin-top: 36px; }
+  .depts { margin-top: 16px; gap: 10px; }
+  .dept { padding: 16px 18px; display: grid; grid-template-columns: 50px 1fr; column-gap: 12px; align-items: start; }
+  .dept .ic { width: 38px; height: 38px; margin-bottom: 0; grid-row: span 2; }
+  .dept .xp-toggle, .dept .xp-body { grid-column: 2; }
+  .dept h3 { font-size: 16.5px; }
+  .dept p { font-size: 14px; }
+  .leader { margin-top: 40px; padding-top: 34px; grid-template-columns: 96px 1fr; gap: 16px; align-items: start; }
+  .photo { width: 96px; height: 112px; border-radius: 10px; }
+  .photo svg { width: 40px; height: 40px; }
+  .leader .nm { font-size: 19px; }
+  .leader .tt { font-size: 13px; }
+  .leader p { font-size: 14.5px; grid-column: 1 / -1; }
+  .leader > div:last-child { display: contents; }
+  .leader > div:last-child > .label, .leader > div:last-child > .nm, .leader > div:last-child > .tt { grid-column: 2; }
+
+  /* security */
+  .shield { padding: 18px; max-width: 280px; margin: 0 auto; }
+  .pts { margin-top: 20px; }
+  .pt { padding: 14px 0; }
+  .pt b { font-size: 15px; }
+  .pt p { font-size: 14px; }
+
+  /* packages */
+  .pk { margin-top: 30px; }
+  .pc { padding: 22px 20px; }
+  .pc h3 { font-size: 19px; }
+  .pc .for { font-size: 13.5px; }
+  .pc li { font-size: 14px; }
+  .pc .btn { margin-top: 20px; }
+  .addons { font-size: 13px; gap: 8px; }
+  .addons span { padding: 6px 11px; }
+  .quote { margin-top: 30px; padding: 22px 20px; }
+  .quote p { font-size: 16px; }
+
+  /* faq */
+  .faq-item button { font-size: 15px; padding: 16px 0; }
+  .faq-item .xp-body p { font-size: 14px; padding-bottom: 16px; }
+
+  /* contact + forms (16px text stops iPhone from zooming in on tap) */
+  .ch a, .ch div { font-size: 14.5px; padding: 14px 0; }
+  .form { padding: 18px; }
+  .field { font-size: 16px; padding: 11px 12px; }
+  textarea.field { min-height: 96px; }
+
+  /* booking window */
+  .modal .mh { padding: 18px 18px 14px; }
+  .modal .mh h3 { font-size: 17px; }
+  .modal .mb { padding: 16px 18px 20px; gap: 14px; }
+  .modal .lbl select.field { font-size: 16px !important; }
+  .day { min-width: 56px; padding: 7px 4px; }
+  .slot { padding: 8px 2px; font-size: 13px; }
+
+  footer.foot { font-size: 12px; padding: 22px 0; }
+  footer.foot a { margin: 0 14px 0 0; }
+  .legal { padding: 40px 18px 70px; }
+  .legal h1 { font-size: 30px; }
+  .legal p, .legal li { font-size: 14.5px; }
+}
+@media (max-width: 370px) {
+  .hero h1 { font-size: 29px; }
+  .nav .acts .btn.accent { padding: 7px 10px; font-size: 13px; }
+}
