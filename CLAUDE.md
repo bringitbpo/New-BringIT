@@ -4,18 +4,19 @@ Marketing site for BringIT, a remote operations and revenue control service for 
 
 ## Stack & deploy
 - React 19 + TypeScript, Vite 6, Tailwind CSS v4 (`@tailwindcss/vite`), Motion (Framer Motion), shadcn/Radix UI, lucide-react icons
-- Firebase Auth (Google sign-in), project `bringit-25`, config in `src/App.tsx`
-- Contact form posts to Formspree (`formspree.io/f/mgorgakb`) in `src/App.tsx`
+- Firebase package is still installed (project `bringit-25`), but the site no longer shows Google sign-in
+- Contact form and call bookings post to Formspree (`formspree.io/f/mgorgakb`), see `src/components/ContactForm.tsx`; after booking, the visitor can send the details to WhatsApp
 - Hosted on Vercel; every push to `main` auto-deploys to production. Domain is on Namecheap.
 - Originally scaffolded in Google AI Studio (README and `.env.example` still reference Gemini; the site does not need a Gemini key to run).
 
 ## Layout
-- `src/App.tsx` — almost the whole site: nav, hero, `#services`, `#about`, `#contact`, footer, auth
-- `src/components/ui/squishy-pricing.tsx` — package cards (no prices shown; buttons open WhatsApp)
-- `src/components/FaqItem.tsx`, `src/components/ContactForm.tsx` — FAQ accordion item, Formspree contact form
-- `src/lib/contact.ts` — WhatsApp / US phone / email constants used across the site
-- `src/components/ui/container-scroll-animation.tsx` — scroll animation
-- `src/public/LOGO_1_1_no_BG.png`, `public/LOGO_1_1_no_BG.png` — logo
+- `src/App.tsx` — puts the page sections together; `/#/privacy` shows the Privacy Policy
+- `src/content/site.ts` — ALL site copy and numbers (edit text here)
+- `src/components/site/` — one file per section (Nav, Hero, OpsTablet, Services, Disputes, HowWeWork, About, Security, Packages, Faq, Contact, BookingModal, PrivacyPolicy, Expandable)
+- `src/site.css` — styles for the light "Executive" design (color variables are prefixed `--b-` to avoid clashing with `src/index.css`)
+- `src/components/ContactForm.tsx` — Formspree contact form (also exports `FORMSPREE_URL`, used by the booking calendar)
+- `src/lib/contact.ts` — WhatsApp / US phone / email constants
+- `public/LOGO_1_1_no_BG.png` — logo
 
 ## Commands
 - `npm install`
@@ -28,7 +29,11 @@ Marketing site for BringIT, a remote operations and revenue control service for 
 - Services: review management, platform monitoring (DoorDash, UberEats, GrubHub, OLO), complaint/dispute handling, staff accountability, owner reporting, social media, scheduling, bill tracking, procurement coordination, multi-store reporting
 - Founder background: 5+ years managing U.S. franchise brands remotely (Dunkin', Cold Stone Creamery, Baskin Robbins, Charleys Cheesesteaks, Domino's, Papa John's)
 - Contact: bringit.bpo@gmail.com · US +1 516-341-1071 · WhatsApp +880 1351-656330
-- Branding: dark matte background with orange accent
+- Branding: light, professional design (white/grey, navy buttons, orange accent)
+- Team: remote team working U.S. hours; departments are Operations, Marketing and Finance. Don't mention Dhaka, team size or founding year
+- Fahad is "Founder & CEO". Never attribute tasks to him by name or as "the owner"; say "our CEO"
+- Contracts are month to month, no free trial. NDA on request; client data deleted when the contract ends
+- Results figures in `src/content/site.ts` are placeholders until Fahad provides real numbers
 
 ## Working with Fahad
 - Brief, step-by-step explanations; direct delivery without extra commentary
